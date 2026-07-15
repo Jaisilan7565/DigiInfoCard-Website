@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+
+  /* Custom Color Tokens matching Figma */
+  --color-primary: #0056ff;
+  --color-buttons-blue: #0056ff;
+  --color-buttons-white: #ffffff;
+
+  --color-sections: #ffffff;
+  --color-sections-blue: #0056ff;
+  --color-sections-grey: #f0f0f0;
+  --color-sections-light-blue: #87b9ff;
+
+  --color-body-copy: #ffffff;
+  --color-body-copy-1: #252525;
+  --color-body-copy-2: #e8e8e8;
+  --color-body-copy-3: #a4a4a4;
+  --color-body-copy-4: #333333;
+  --color-body-text-3: #6d6d6d;
+  --color-headlines-2: #333333;
+
+  /* Custom Corner Radius Tokens */
+  --radius-cr-3: 16px;
+  --radius-radius-3: 18px;
+  --radius-radius-4: 24px;
+  --radius-radius-10: 44px;
+  --radius-radius-11: 50px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: var(--color-body-copy-copy-1);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
