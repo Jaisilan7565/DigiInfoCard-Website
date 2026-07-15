@@ -7,7 +7,7 @@
 
   /* Custom Color Tokens matching Figma */
   --color-primary: #0056ff;
-  --color-buttons-blue: #0056ff;
+  --color-buttons-blue: #315aff;
   --color-buttons-white: #ffffff;
 
   --color-sections: #ffffff;
@@ -47,7 +47,8 @@ body {
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-html, body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+html,
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

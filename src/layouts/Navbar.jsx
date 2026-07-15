@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <header className="w-full bg-[var(--color-primary)] font-plus-jakarta sticky top-0 z-50">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-3 md:py-5 flex items-center justify-between">
         {/* Logo Section */}
         <a
           href="/"
@@ -45,7 +45,7 @@ const Navbar = () => {
           <img
             src="/images/digi-logo.png"
             alt="Digiinfo Card Logo"
-            className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             onError={(e) => {
               // Fallback to text-based logo if image fails to load
               e.target.style.display = "none";
