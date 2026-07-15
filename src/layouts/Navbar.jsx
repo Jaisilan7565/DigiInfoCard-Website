@@ -35,7 +35,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full bg-[var(--color-primary)] font-plus-jakarta sticky top-0 z-50">
+    <header className="w-full bg-[var(--color-primary)] font-plus-jakarta sticky top-0 z-50 relative">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-3 md:py-5 flex items-center justify-between">
         {/* Logo Section */}
         <a
@@ -131,8 +131,8 @@ const Navbar = () => {
 
       {/* Mobile Drawer Navigation */}
       <div
-        className={`fixed inset-0 top-[80px] z-40 bg-[var(--color-primary)] transition-all duration-500 ease-in-out md:hidden flex flex-col justify-between px-6 py-10
-          ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"}`}
+        className={`absolute top-full left-0 right-0 z-40 bg-[var(--color-primary)] transition-all duration-500 ease-in-out md:hidden flex flex-col justify-between px-6 py-10 min-h-[calc(100vh-65px)]
+          ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"}`}
       >
         <nav className="flex flex-col gap-6 text-center mt-6">
           {navItems.map((item, idx) => {
