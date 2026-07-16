@@ -17,7 +17,7 @@ const Section_1 = () => {
       </picture>
       <div className="relative z-10 flex flex-col items-center px-6 py-12 md:py-24 text-center max-w-4xl mx-auto">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[var(--color-primary)] font-semibold text-xs md:text-sm tracking-wide mb-6">
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[var(--color-primary)] font-semibold text-sm md:text-base tracking-wide mb-6">
           <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]"></span>
           Next Gen Networking
         </div>
