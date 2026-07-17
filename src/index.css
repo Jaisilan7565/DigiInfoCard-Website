@@ -21,9 +21,11 @@
   --color-body-copy-3: #a4a4a4;
   --color-body-copy-4: #333333;
   --color-body-text-3: #6d6d6d;
+  --color-body-text-2: #868686;
   --color-headlines-2: #333333;
 
   --color-yellow: #fbff0a;
+  --color-yellow-1: #e8bc00;
   --color-light-gray: #f6f6f6;
 
   /* Custom Corner Radius Tokens */
