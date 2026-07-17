@@ -18,7 +18,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full font-plus-jakarta bg-gradient-to-b from-[var(--color-primary)]  to-[var(--color-sections-light-blue)] rounded-t-[44px] ">
+    <div className="w-full bg-[var(--color-light-gray)]">
+      <footer className="w-full font-plus-jakarta bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-sections-light-blue)] rounded-t-[44px]">
       {/* Main Footer Body */}
       <div className="w-full mx-auto px-5 md:px-14 pt-6 md:pt-14">
         {/* Logo */}
@@ -39,13 +40,41 @@ const Footer = () => {
               number — they're getting a piece of who you are.
             </p>
 
-            {/* Blue Dots */}
+            {/* Social Media Links */}
             <div className="flex items-center gap-3 md:gap-5">
-              {/* Facebook */}
-              <div className="w-4 h-4 md:w-9 md:h-9 bg-[var(--color-buttons-blue)] rounded-full"></div>
-              <div className="w-4 h-4 md:w-9 md:h-9 bg-[var(--color-buttons-blue)] rounded-full"></div>
-              <div className="w-4 h-4 md:w-9 md:h-9 bg-[var(--color-buttons-blue)] rounded-full"></div>
-              <div className="w-4 h-4 md:w-9 md:h-9 bg-[var(--color-buttons-blue)] rounded-full"></div>
+              <a
+                href="#"
+                className="w-8 h-8 md:w-9 md:h-9 hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+                aria-label="LinkedIn"
+              >
+                <img
+                  src="/images/linkedin.png"
+                  alt="LinkedIn"
+                  className="w-full h-full object-contain"
+                />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 md:w-9 md:h-9 hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+                aria-label="Instagram"
+              >
+                <img
+                  src="/images/instagram.png"
+                  alt="Instagram"
+                  className="w-full h-full object-contain"
+                />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 md:w-9 md:h-9 hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+                aria-label="Facebook"
+              >
+                <img
+                  src="/images/facebook.png"
+                  alt="Facebook"
+                  className="w-full h-full object-contain"
+                />
+              </a>
             </div>
 
             {/* Download Our App */}
@@ -142,7 +171,8 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 

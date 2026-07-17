@@ -30,16 +30,6 @@ const Section_9 = () => {
         "Yes, with our business plan you can manage your team cards from a centralized dashboard. You can create templates, bulk-assign designs, update contact details, and view team-wide analytics.",
     },
     {
-      question: "Is DigInfo only for businesses?",
-      answer:
-        "No. DigInfo is designed for individual professionals, freelancers, consultants, doctors, entrepreneurs, sales teams, and organizations of all sizes.",
-    },
-    {
-      question: "Can I manage my team using DigInfo?",
-      answer:
-        "Absolutely. DigInfo includes team management features such as departments, member permissions, task assignments, event scheduling, and organization hierarchy management.",
-    },
-    {
       question: "What analytics does DigInfo provide?",
       answer:
         "You can track profile views, card visits, QR scans, saved contacts, link clicks, and engagement insights to better understand and grow your professional network.",
