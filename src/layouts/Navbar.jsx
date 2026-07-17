@@ -27,6 +27,57 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (isOpen) {
+        setIsVisible(true);
+        return;
+      }
+
+      // Don't hide the navbar at the very top of the page
+      if (currentScrollY < 150) {
+        setIsVisible(true);
+      } else {
+        // Scroll delta threshold of 10px to avoid jitter
+        const diff = Math.abs(currentScrollY - lastScrollY);
+        if (diff > 10) {
+          if (currentScrollY > lastScrollY) {
+            setIsVisible(false);
+          } else {
+            setIsVisible(true);
+          }
+        }
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, isOpen]);
+
+  useEffect(() => {
+    const updateNavbarOffset = () => {
+      const headerEl = document.querySelector("header");
+      const height = headerEl ? headerEl.getBoundingClientRect().height : 65;
+      if (isVisible) {
+        document.documentElement.style.setProperty("--navbar-offset", `${height}px`);
+      } else {
+        document.documentElement.style.setProperty("--navbar-offset", "15px");
+      }
+    };
+
+    updateNavbarOffset();
+    window.addEventListener("resize", updateNavbarOffset);
+    return () => window.removeEventListener("resize", updateNavbarOffset);
+  }, [isVisible]);
+
+
   const navItems = [
     { name: "Home", href: "#" },
     { name: "About Us", href: "#about" },
@@ -35,7 +86,11 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full bg-[var(--color-primary)] font-plus-jakarta sticky top-0 z-50 relative">
+    <header
+      className={`w-full bg-[var(--color-primary)] font-plus-jakarta sticky top-0 z-50 transition-transform duration-300 ease-in-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-3 md:py-5 flex items-center justify-between">
         {/* Logo Section */}
         <a

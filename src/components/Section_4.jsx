@@ -1,35 +1,30 @@
 import React, { useRef, useEffect, useState } from "react";
-import FeatureCard from "./FeatureCard";
+import StepCard from "./StepCard";
 
 const features = [
   {
-    image: "/images/features/feature-1.png",
-    header: "Smart Digital Cards",
+    image: "/videos/steps/Motion-1.webm",
+    header: "Create Your Digital Identity.",
     description:
-      "Create beautiful digital cards that instantly share your contact information, social links, portfolio, products, and services.",
+      "Design a personal digital business card with your contact details, social links, products, services, & professional information.",
   },
   {
-    image: "/images/features/feature-2.png",
-    header: "Professional Networking",
+    image: "/videos/steps/Motion-2.webm",
+    header: "Scan & Connect Instantly.",
     description:
-      "Exchange contacts effortlessly through QR codes, card sharing, and smart contact management tools.",
+      "Simply scan a digital business card or QR to instantly exchange contact information & build  professional connections.",
   },
   {
-    image: "/images/features/feature-3.png",
-    header: "CRM & Lead Capture",
-    description: (
-      <>
-        Capture, qualify, and manage leads with a built-in CRM. Track follow-ups
-        and
-        <br /> pipeline progress effortlessly.
-      </>
-    ),
+    image: "/videos/steps/Motion-3.webm",
+    header: "Save Contacts & Work Details.",
+    description:
+      "Store contacts securely while saving meeting notes, follow-up reminders, tasks, and conversation details for future reference.",
   },
   {
-    image: "/images/features/feature-4.png",
-    header: "Realtime Analytics",
+    image: "/videos/steps/Motion-4.webm",
+    header: "Unlock Opportunities.",
     description:
-      "Track profile views, card scans, saved contacts and engagement insights to grow your network effectively.",
+      "Stay connected, collaborate on opportunities, assign tasks & strengthen connections through DigInfo's smart CRM tools.",
   },
 ];
 
@@ -38,7 +33,7 @@ const PEEK = 20;
 /* Navbar height in px */
 const NAVBAR_HEIGHT = 65;
 
-const Section_3 = () => {
+const Section_4 = () => {
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -72,7 +67,7 @@ const Section_3 = () => {
       /* overflow:clip clips border-radius WITHOUT breaking position:sticky
          (overflow:hidden would block sticky) */
       className="w-full md:w-[94%] min-h-[220vh] md:min-h-screen
-      rounded-[44px] md:my-[64px] relative [overflow:clip]"
+      rounded-[44px] md:my-36 my-24 relative [overflow:clip]"
     >
       {/* Mobile-only sticky — resets to static on desktop via md:static */}
       <style>{`
@@ -125,18 +120,15 @@ const Section_3 = () => {
 
           {/* Title */}
           <h1 className="text-3xl md:text-5xl font-semibold text-white leading-[1.2] tracking-tight mb-6 max-w-4xl">
-            Everything You Need To <br className="md:hidden" />
-            <span className="text-[var(--color-yellow)]">
-              Build, Share &amp; Grow
-            </span>{" "}
-            Your <br className="md:hidden" /> Professional Identity.
+            <span className="text-[var(--color-yellow)]">Four Steps</span> to
+            Your <br /> Smart Business Card.
           </h1>
 
           {/* Description */}
-          <p className="text-white text-sm md:text-xl font-[600] font-plus-jakarta max-w-2xl md:max-w-5xl leading-relaxed mb-10">
-            From smart digital business cards to team collaboration &amp;
-            advanced analytics, Diglnfo helps professionals and businesses
-            connect, manage, and grow through a single powerful platform.
+          <p className="text-white text-sm md:text-xl font-[600] font-plus-jakarta max-w-2xl md:max-w-4xl leading-relaxed mb-10">
+            You can create, customize & track your Card very efficiently. You
+            can Also Manage tasks & Organize teams & work them through our CRM
+            system.
           </p>
         </div>
 
@@ -159,7 +151,7 @@ const Section_3 = () => {
                 className="card-stack-item md:static"
                 style={{ top: stickyTop, zIndex }}
               >
-                <FeatureCard
+                <StepCard
                   image={feature.image}
                   header={feature.header}
                   description={feature.description}
@@ -173,4 +165,4 @@ const Section_3 = () => {
   );
 };
 
-export default Section_3;
+export default Section_4;
