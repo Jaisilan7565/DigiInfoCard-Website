@@ -7,6 +7,7 @@ import Section_5 from "../components/Section_5";
 import Section_6 from "../components/Section_6";
 import Section_7 from "../components/Section_7";
 import Section_8 from "../components/Section_8";
+import Section_9 from "../components/Section_9";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Section_6 />
       <Section_7 />
       <Section_8 />
+      <Section_9 />
     </>
   );
 };

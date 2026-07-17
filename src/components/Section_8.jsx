@@ -346,7 +346,7 @@ const Section_8 = () => {
           {/* Left Side Header */}
           <div className="w-full md:max-w-4xl text-center md:text-left px-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 text-[var(--color-yellow)] font-semibold text-base tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 text-[var(--color-yellow)] font-semibold text-base tracking-wider mt-10 md:mt-0 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-yellow)]"></span>
               Testimonials
             </div>
