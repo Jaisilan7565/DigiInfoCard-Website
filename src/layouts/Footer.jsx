@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <div className="w-full bg-[var(--color-light-gray)]">
-      <footer className="w-full font-plus-jakarta bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-sections-light-blue)] rounded-t-[44px]">
+      <footer id="contact" className="w-full font-plus-jakarta bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-sections-light-blue)] rounded-t-[44px] scroll-mt-20 md:scroll-mt-24">
       {/* Main Footer Body */}
       <div className="w-full mx-auto px-5 md:px-14 pt-6 md:pt-14">
         {/* Logo */}

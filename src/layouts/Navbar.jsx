@@ -1,8 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
+
+  // Synchronize active navigation item with the current route pathname and hash
+  useEffect(() => {
+    const hash = location.hash;
+    const pathname = location.pathname;
+
+    if (pathname === "/") {
+      if (hash === "#about") {
+        setActiveItem("About Us");
+      } else if (hash === "#features") {
+        setActiveItem("Features");
+      } else if (hash === "#pricing") {
+        setActiveItem("Pricing");
+      } else {
+        setActiveItem("Home");
+      }
+    } else {
+      setActiveItem(""); // Clear active item on other paths like /individual
+    }
+  }, [location]);
 
   // Prevent body scrolling when the mobile menu drawer is open
   useEffect(() => {
@@ -30,12 +52,36 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  const isAutoScrolling = useRef(false);
+  const autoScrollTimeout = useRef(null);
+
+  // Keep track of programmatic auto-scrolls triggered by navigation clicks/hash changes
+  useEffect(() => {
+    isAutoScrolling.current = true;
+    setIsVisible(true);
+
+    if (autoScrollTimeout.current) {
+      clearTimeout(autoScrollTimeout.current);
+    }
+
+    autoScrollTimeout.current = setTimeout(() => {
+      isAutoScrolling.current = false;
+    }, 1200); // 1.2s covers standard smooth scroll animations
+
+    return () => {
+      if (autoScrollTimeout.current) {
+        clearTimeout(autoScrollTimeout.current);
+      }
+    };
+  }, [location.pathname, location.hash]);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (isOpen) {
+      if (isOpen || isAutoScrolling.current) {
         setIsVisible(true);
+        setLastScrollY(currentScrollY);
         return;
       }
 
@@ -79,10 +125,10 @@ const Navbar = () => {
 
 
   const navItems = [
-    { name: "Home", href: "#" },
-    { name: "About Us", href: "#about" },
-    { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/#about" },
+    { name: "Features", href: "/#features" },
+    { name: "Pricing", href: "/#pricing" },
   ];
 
   return (
@@ -93,8 +139,8 @@ const Navbar = () => {
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-3 md:py-5 flex items-center justify-between">
         {/* Logo Section */}
-        <a
-          href="/"
+        <Link
+          to="/"
           className="flex items-center gap-3 group focus:outline-none"
         >
           <img
@@ -106,20 +152,16 @@ const Navbar = () => {
               e.target.style.display = "none";
             }}
           />
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-10">
           {navItems.map((item) => {
             const isActive = activeItem === item.name;
             return (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setActiveItem(item.name);
-                }}
+                to={item.href}
                 className={`text-white text-base text-[20px] font-medium relative py-1 transition-all duration-300 hover:text-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-sm
                   ${
                     isActive
@@ -128,19 +170,19 @@ const Navbar = () => {
                   }`}
               >
                 {item.name}
-              </a>
+              </Link>
             );
           })}
         </nav>
 
         {/* Desktop Call to Action Button */}
         <div className="hidden md:block">
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-[var(--color-body-copy-4)] font-semibold text-[16px] rounded-xl transition-all duration-300 hover:bg-white/95 hover:scale-[1.03] hover:shadow-[0_8px_20px_rgba(255,255,255,0.2)] focus:outline-none focus:ring-2 focus:ring-white active:scale-[0.98]"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -193,14 +235,10 @@ const Navbar = () => {
           {navItems.map((item, idx) => {
             const isActive = activeItem === item.name;
             return (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setActiveItem(item.name);
-                  setIsOpen(false);
-                }}
+                to={item.href}
+                onClick={() => setIsOpen(false)}
                 style={{
                   transitionDelay: isOpen ? `${idx * 75}ms` : "0ms",
                 }}
@@ -209,7 +247,7 @@ const Navbar = () => {
                   ${isActive ? "text-white scale-105" : "text-white/70 hover:text-white"}`}
               >
                 {item.name}
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -218,13 +256,13 @@ const Navbar = () => {
           className={`flex flex-col items-center gap-4 transition-all duration-500 delay-300 w-full px-4 mb-10
             ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             onClick={() => setIsOpen(false)}
             className="w-full max-w-sm text-center py-4 bg-white text-[var(--color-body-copy-4)] font-bold text-lg rounded-[16px] shadow-lg transition-transform active:scale-[0.98] focus:outline-none"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </header>

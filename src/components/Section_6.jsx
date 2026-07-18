@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Section_6 = () => {
   const cards = [
@@ -7,7 +8,7 @@ const Section_6 = () => {
       title: "Individuals & Professionals",
       description:
         "Build your digital identity & make every connection count. Create stunning digital business cards, share your profile instantly, exchange contacts effortlessly, & grow your professional network wherever you go.",
-      link: "#individuals",
+      link: "/individual",
     },
     {
       image: "/images/section-6-2.png",
@@ -42,8 +43,8 @@ const Section_6 = () => {
             </p>
 
             {/* CTA Button */}
-            <a
-              href={card.link}
+            <Link
+              to={card.link}
               className="inline-flex items-center gap-2.5 px-6 md:px-8 py-3.5 bg-[var(--color-primary)] text-white font-semibold text-sm md:text-base rounded-xl hover:bg-[var(--color-primary)]/90 active:scale-[0.98] transition-all duration-300 shadow-lg shadow-[var(--color-primary)]/10 mt-auto"
             >
               Learn More
@@ -60,7 +61,7 @@ const Section_6 = () => {
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         ))}
       </div>

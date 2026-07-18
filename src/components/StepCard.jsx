@@ -13,7 +13,7 @@ const StepCard = ({ image, header, description }) => {
       <div className="md:w-100 overflow-hidden relative">
         <video
           src={image}
-          className="w-full h-auto p-4 object-contain select-none pointer-events-none"
+          className="w-full h-[280px] md:h-auto p-4 object-contain select-none pointer-events-none"
           autoPlay
           loop
           muted

@@ -2,7 +2,7 @@ import React from "react";
 
 const Section_5 = () => {
   return (
-    <section className="w-full md:w-[94%] bg-white px-7 pb-16 flex flex-col md:flex-row items-center justify-between relative overflow-hidden font-plus-jakarta">
+    <section id="about" className="w-full md:w-[94%] bg-white px-7 pb-16 flex flex-col md:flex-row items-center justify-between relative overflow-hidden font-plus-jakarta scroll-mt-20 md:scroll-mt-24">
       {/* Left Column: Text Content */}
       <div className="flex-1 md:flex-[1.3] text-left flex flex-col items-center md:items-start max-w-2xl z-10">
         {/* Badge */}

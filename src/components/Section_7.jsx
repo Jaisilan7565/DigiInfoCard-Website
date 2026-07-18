@@ -59,7 +59,7 @@ const Section_7 = () => {
   ];
 
   return (
-    <section className="w-full bg-[var(--color-light-gray)] py-20 md:px-4 flex flex-col items-center text-center font-plus-jakarta md:mt-16 mt-8">
+    <section id="pricing" className="w-full bg-[var(--color-light-gray)] py-20 md:px-4 flex flex-col items-center text-center font-plus-jakarta md:mt-16 mt-8 scroll-mt-20 md:scroll-mt-24">
       {/* Badge */}
       <div className="flex items-center gap-2.5 text-[var(--color-primary)] font-semibold text-sm md:text-base tracking-wide mb-6">
         <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]"></span>

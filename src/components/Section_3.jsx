@@ -68,10 +68,11 @@ const Section_3 = () => {
 
   return (
     <div
+      id="features"
       /* overflow:clip clips border-radius WITHOUT breaking position:sticky
          (overflow:hidden would block sticky) */
       className="w-full md:w-[94%] min-h-[220vh] md:min-h-screen
-      rounded-[44px] md:my-[64px] relative [overflow:clip]"
+      rounded-[44px] md:my-[64px] relative [overflow:clip] scroll-mt-20 md:scroll-mt-24"
     >
       {/* Mobile-only sticky — resets to static on desktop via md:static */}
       <style>{`
