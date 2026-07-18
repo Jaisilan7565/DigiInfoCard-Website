@@ -206,12 +206,12 @@ const Section_10 = () => {
           onMouseUp={handleInteractionEnd}
           onTouchStart={handleInteractionStart}
           onTouchEnd={handleInteractionEnd}
-          className="relative z-10 flex flex-row gap-3 justify-start items-stretch overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory w-full mb-16"
+          className="relative z-10 flex flex-row gap-3 justify-start items-stretch overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory w-full mb-2"
         >
           {displayBlogsMobile.map((blog, idx) => renderCard(blog, idx, false))}
         </div>
       ) : (
-        <div className="w-full max-w-7xl mx-auto grid grid-cols-3 gap-8 mb-16">
+        <div className="w-full max-w-7xl mx-auto grid grid-cols-3 gap-8 mb-8">
           {blogsData.map((blog, idx) => renderCard(blog, idx, true))}
         </div>
       )}

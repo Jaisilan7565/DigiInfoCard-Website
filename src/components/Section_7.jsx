@@ -87,7 +87,7 @@ const Section_7 = () => {
           return (
             <div
               key={idx}
-              className={`flex-1 rounded-[32px] overflow-hidden mx-4 flex flex-col text-left transition-all duration-300 hover:scale-[1.02] ${
+              className={`flex-1 rounded-[32px] overflow-hidden mx-4 flex flex-col text-left transition-all duration-300 hover:scale-[1.02] min-h-[480px] ${
                 isBlue
                   ? "bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-sections-light-blue)] text-white shadow-xl shadow-[var(--color-primary)]/20"
                   : "bg-white text-[var(--color-body-copy-4)] border border-neutral-100 shadow-sm"

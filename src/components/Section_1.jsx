@@ -10,7 +10,7 @@ const Section_1 = () => {
       <picture>
         <source media="(max-width: 767px)" srcSet="/svg/section1-m-bg.svg" />
         <img
-          className="absolute left-0 right-0 bottom-0 w-full"
+          className="absolute inset-0 w-full h-full object-cover object-bottom"
           src="/svg/section1-bg.svg"
           alt="bg-img"
         />

@@ -30,37 +30,36 @@ const features = [
 
 /* px each underlying card peeks above the next card */
 const PEEK = 20;
-/* Navbar height in px */
-const NAVBAR_HEIGHT = 65;
 
 const Section_4 = () => {
-  const headerRef = useRef(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const titleRef = useRef(null);
+  const [titleHeight, setTitleHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const measure = () => {
-      if (window.innerWidth < 768 && headerRef.current) {
-        const h = headerRef.current.getBoundingClientRect().height;
-        setHeaderHeight(h);
+      if (isMobile && titleRef.current) {
+        const h = titleRef.current.getBoundingClientRect().height;
+        setTitleHeight(h);
       }
     };
     measure();
+    const timer = setTimeout(measure, 100);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
-
-  /*
-   * Reverse the render order so card 1 is LAST in the DOM.
-   * DOM position determines WHEN each card sticks (lower DOM = earlier sticky).
-   * Reversed order means card 4 sticks first, card 1 sticks last.
-   *
-   * top  values: cards 4, 3, 2 stack at baseTop area (below header).
-   *              card 1 (DOM last) sticks at NAVBAR_HEIGHT → slides over header.
-   *
-   * z-index: increases with DOM index so later cards appear on top.
-   *          card 1 (domIdx=3) gets z-index 5 — highest — covers everything.
-   */
-  const lastDomIdx = features.length - 1;
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", measure);
+    };
+  }, [isMobile]);
 
   return (
     <div
@@ -76,8 +75,8 @@ const Section_4 = () => {
             position: sticky;
             transition: top 0.3s ease-in-out;
           }
-          /* Header stays put; cards (z-index 2-5) slide over it */
-          .section3-header {
+          /* Entire Header stays sticky at the top so description stays on screen */
+          .section4-header {
             position: sticky;
             top: var(--navbar-offset, 65px);
             z-index: 1;
@@ -89,13 +88,13 @@ const Section_4 = () => {
       {/* Background SVG and Gradient - sticky on mobile, absolute on desktop */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="sticky md:absolute top-0 w-full h-screen md:h-full bg-gradient-to-b from-[var(--color-primary)] md:via-30% via-[var(--color-primary)]/80 to-[var(--color-sections-light-blue)]">
-          <picture className="block w-full">
+          <picture className="block w-full h-full">
             <source
               media="(max-width: 767px)"
               srcSet="/svg/section3-m-bg.svg"
             />
             <img
-              className="w-full pointer-events-none"
+              className="w-full h-full object-cover object-bottom pointer-events-none"
               src="/svg/section3-bg.svg"
               alt=""
             />
@@ -104,27 +103,24 @@ const Section_4 = () => {
       </div>
 
       <div className="relative z-10 flex flex-col items-center px-6 py-12 md:py-24 text-center max-w-6xl mx-auto font-plus-jakarta">
-        {/* ── Header block ──
-            Mobile: sticky at NAVBAR_HEIGHT (stays put), z-index:1 so cards
-                    can slide over it.
-            Desktop: normal flow (section3-header class has no effect ≥768px) */}
-        <div
-          ref={headerRef}
-          className="section3-header w-full flex flex-col items-center"
-        >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[var(--color-yellow)] font-semibold text-sm md:text-base tracking-wide mb-6">
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-yellow)]"></span>
-            Our Features
+        {/* Header Block - sticky as a whole */}
+        <div className="section4-header w-full flex flex-col items-center">
+          {/* Badge & Title (Headers) */}
+          <div ref={titleRef} className="w-full flex flex-col items-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[var(--color-yellow)] font-semibold text-sm md:text-base tracking-wide mb-6">
+              <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-yellow)]"></span>
+              Our Features
+            </div>
+
+            {/* Title */}
+            <h1 className="text-3xl md:text-5xl font-semibold text-white leading-[1.2] tracking-tight mb-6 max-w-4xl">
+              <span className="text-[var(--color-yellow)]">Four Steps</span> to
+              Your Smart Business Card.
+            </h1>
           </div>
 
-          {/* Title */}
-          <h1 className="text-3xl md:text-5xl font-semibold text-white leading-[1.2] tracking-tight mb-6 max-w-4xl">
-            <span className="text-[var(--color-yellow)]">Four Steps</span> to
-            Your <br /> Smart Business Card.
-          </h1>
-
-          {/* Description */}
+          {/* Description (Body Copy) - cards will slide over this */}
           <p className="text-white text-sm md:text-xl font-[600] font-plus-jakarta max-w-2xl md:max-w-4xl leading-relaxed mb-10">
             You can create, customize & track your Card very efficiently. You
             can Also Manage tasks & Organize teams & work them through our CRM
@@ -132,17 +128,12 @@ const Section_4 = () => {
           </p>
         </div>
 
-        {/* ── Feature Cards ──
-            Mobile: reversed DOM order → card4 sticks first, card1 sticks last.
-                    card1 (domIdx=3, z-index=5) slides up to NAVBAR_HEIGHT,
-                    passing over the header (z-index=1) and hiding it.
-            Desktop: original visual order via flex-col-reverse, 2×2 grid */}
-        <div className="w-full md:w-fit flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 text-left">
+        {/* Feature Cards Grid */}
+        <div className="w-full md:w-fit flex flex-col md:grid md:grid-cols-2 gap-34 md:gap-8 text-left">
           {features.map((feature, domIdx) => {
-            const isLast = domIdx === lastDomIdx; // card1 in reversed = last
-            const stickyTop = isLast
-              ? "var(--navbar-offset, 65px)"
-              : `calc(var(--navbar-offset, 65px) + ${headerHeight}px + ${domIdx * PEEK}px)`;
+            const stickyTop = isMobile
+              ? `calc(var(--navbar-offset, 65px) + ${titleHeight}px + ${domIdx * PEEK}px)`
+              : "auto";
             const zIndex = domIdx + 2; // 2, 3, 4, 5
 
             return (

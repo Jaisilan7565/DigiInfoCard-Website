@@ -95,7 +95,15 @@ const Section_8 = () => {
           if (card) {
             const gap = 12; // gap-3 is 12px
             const cardWidth = card.getBoundingClientRect().width + gap;
-            container.scrollBy({ left: cardWidth, behavior: "smooth" });
+            const paddingLeft =
+              parseFloat(getComputedStyle(container).paddingLeft) || 0;
+            const curIdx = Math.round(
+              (container.scrollLeft - paddingLeft) / cardWidth,
+            );
+            container.scrollTo({
+              left: paddingLeft + (curIdx + 1) * cardWidth,
+              behavior: "smooth",
+            });
           }
         }
         if (mobileRow2Ref.current) {
@@ -104,7 +112,15 @@ const Section_8 = () => {
           if (card) {
             const gap = 12; // gap-3 is 12px
             const cardWidth = card.getBoundingClientRect().width + gap;
-            container.scrollBy({ left: -cardWidth, behavior: "smooth" });
+            const paddingLeft =
+              parseFloat(getComputedStyle(container).paddingLeft) || 0;
+            const curIdx = Math.round(
+              (container.scrollLeft - paddingLeft) / cardWidth,
+            );
+            container.scrollTo({
+              left: paddingLeft + (curIdx - 1) * cardWidth,
+              behavior: "smooth",
+            });
           }
         }
       } else {
@@ -115,7 +131,15 @@ const Section_8 = () => {
           if (card) {
             const gap = 32; // gap-8
             const cardWidth = card.getBoundingClientRect().width + gap;
-            container.scrollBy({ left: cardWidth, behavior: "smooth" });
+            const paddingLeft =
+              parseFloat(getComputedStyle(container).paddingLeft) || 0;
+            const curIdx = Math.round(
+              (container.scrollLeft - paddingLeft) / cardWidth,
+            );
+            container.scrollTo({
+              left: paddingLeft + (curIdx + 1) * cardWidth,
+              behavior: "smooth",
+            });
           }
         }
       }
@@ -145,7 +169,9 @@ const Section_8 = () => {
         const gap = 32;
         const cardWidth = card.getBoundingClientRect().width + gap;
         if (cardWidth > 32) {
-          container.scrollLeft = 3 * cardWidth;
+          const paddingLeft =
+            parseFloat(getComputedStyle(container).paddingLeft) || 0;
+          container.scrollLeft = paddingLeft + 3 * cardWidth;
         } else {
           requestAnimationFrame(initScroll);
         }
@@ -165,10 +191,12 @@ const Section_8 = () => {
       if (cardWidth <= 32) return;
 
       const oneSetWidth = 6 * cardWidth;
+      const paddingLeft =
+        parseFloat(getComputedStyle(container).paddingLeft) || 0;
 
-      if (container.scrollLeft >= 9 * cardWidth - 15) {
+      if (container.scrollLeft >= paddingLeft + 9 * cardWidth - 15) {
         container.scrollLeft = container.scrollLeft - oneSetWidth;
-      } else if (container.scrollLeft <= 0.5 * cardWidth) {
+      } else if (container.scrollLeft <= paddingLeft + 0.5 * cardWidth) {
         container.scrollLeft = container.scrollLeft + oneSetWidth;
       }
     };
@@ -196,7 +224,9 @@ const Section_8 = () => {
           const gap = 12; // gap-3 is 12px
           const cardWidth = card.getBoundingClientRect().width + gap;
           if (cardWidth > 12) {
-            container.scrollLeft = 3 * cardWidth;
+            const paddingLeft =
+              parseFloat(getComputedStyle(container).paddingLeft) || 0;
+            container.scrollLeft = paddingLeft + 3 * cardWidth;
           } else {
             requestAnimationFrame(initScroll);
           }
@@ -216,10 +246,12 @@ const Section_8 = () => {
         if (cardWidth <= 12) return;
 
         const setWidth = 3 * cardWidth;
+        const paddingLeft =
+          parseFloat(getComputedStyle(container).paddingLeft) || 0;
 
-        if (container.scrollLeft >= 6 * cardWidth - 10) {
+        if (container.scrollLeft >= paddingLeft + 6 * cardWidth - 10) {
           container.scrollLeft = container.scrollLeft - setWidth;
-        } else if (container.scrollLeft <= 0.5 * cardWidth) {
+        } else if (container.scrollLeft <= paddingLeft + 0.5 * cardWidth) {
           container.scrollLeft = container.scrollLeft + setWidth;
         }
       };
@@ -251,8 +283,16 @@ const Section_8 = () => {
       if (card) {
         const gap = 32;
         const cardWidth = card.getBoundingClientRect().width + gap;
-        const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
-        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        const paddingLeft =
+          parseFloat(getComputedStyle(container).paddingLeft) || 0;
+        const curIdx = Math.round(
+          (container.scrollLeft - paddingLeft) / cardWidth,
+        );
+        const targetIdx = direction === "left" ? curIdx - 1 : curIdx + 1;
+        container.scrollTo({
+          left: paddingLeft + targetIdx * cardWidth,
+          behavior: "smooth",
+        });
       }
     }
     startAutoplay();
@@ -271,7 +311,7 @@ const Section_8 = () => {
       key={idx}
       className={`testimonial-card flex-shrink-0 flex flex-col bg-white text-[var(--color-body-copy-4)] rounded-xl shadow-lg border border-neutral-100/80 transition-transform duration-300 ${
         isDesktop
-          ? "w-[calc((100%-4rem)/3)] min-w-[calc((100%-4rem)/3)] max-w-[calc((100%-4rem)/3)] p-8 hover:scale-[1.01]"
+          ? "w-[calc((100%-4rem)/3)] min-w-[calc((100%-4rem)/3)] max-w-[calc((100%-4rem)/3)] p-8 snap-start"
           : "w-[88%] min-w-[88%] max-w-[88%] snap-center p-6"
       }`}
     >
@@ -323,17 +363,17 @@ const Section_8 = () => {
 
   return (
     <div className="w-full bg-gradient-to-b from-[var(--color-light-gray)] from-50% to-white to-50% py-8 md:py-32">
-      <section className="w-full md:w-[94%] rounded-[44px] px-0 md:px-16 py-2 md:py-16 text-white relative overflow-hidden font-plus-jakarta mx-auto shadow-xl shadow-[var(--color-primary)]/10 z-10">
+      <section className="w-full md:w-[94%] rounded-[44px] px-0 md:px-16 pt-2 pb-14 md:py-16 text-white relative overflow-hidden font-plus-jakarta mx-auto shadow-xl shadow-[var(--color-primary)]/10 z-10">
         {/* Background SVG and Gradient */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="sticky md:absolute top-0 w-full h-full bg-gradient-to-b from-[var(--color-primary)] md:via-30% via-[var(--color-primary)]/80 to-[var(--color-sections-light-blue)]">
-            <picture className="block w-full">
+            <picture className="block w-full md:h-full">
               <source
                 media="(max-width: 767px)"
                 srcSet="/svg/section8-m-bg.svg"
               />
               <img
-                className="w-full pointer-events-none"
+                className="w-full h-full object-cover object-bottom pointer-events-none"
                 src="/svg/section8-bg.svg"
                 alt=""
               />
@@ -449,7 +489,7 @@ const Section_8 = () => {
             onMouseUp={handleInteractionEnd}
             onTouchStart={handleInteractionStart}
             onTouchEnd={handleInteractionEnd}
-            className="relative z-10 flex flex-row gap-8 justify-start items-stretch overflow-x-auto no-scrollbar pb-2 w-full"
+            className="relative z-10 flex flex-row gap-8 justify-start items-stretch overflow-x-auto no-scrollbar pt-4 pb-12 px-2 w-full snap-x snap-mandatory"
           >
             {displayTestimonialsDesktop.map((item, idx) =>
               renderCard(item, idx, true),
