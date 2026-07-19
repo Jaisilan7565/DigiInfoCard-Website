@@ -37,7 +37,7 @@ const AboutUs = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="w-full max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-0 py-10 md:py-16 mb-8 md:mb-28">
+        <div className="w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-0 py-10 md:py-16 mb-8 md:mb-28">
           {/* Stat 1 */}
           <div className="flex flex-col items-start md:items-center text-center md:text-left md:px-6 px-4 py-6 md:py-2 border-r-2 border-b-2 md:border-b-0 border-[var(--color-body-copy-3)]/60">
             <span className="text-2xl md:text-4xl font-semibold text-[var(--color-primary)] mb-3">
@@ -77,7 +77,7 @@ const AboutUs = () => {
         </div>
 
         {/* Content sections (Story, Mission, Vision) */}
-        <div className="w-full max-w-5xl flex flex-col gap-16 md:gap-24 text-left mb-12">
+        <div className="w-full max-w-6xl flex flex-col gap-16 md:gap-24 text-left mb-12">
           {/* Our Story */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16">
             <div className="md:col-span-4">
@@ -85,7 +85,7 @@ const AboutUs = () => {
                 Our Story
               </h2>
             </div>
-            <div className="md:col-span-8 flex flex-col gap-6 text-sm md:text-lg font-[600] leading-relaxed text-[var(--color-body-text-3)]">
+            <div className="md:col-span-8 flex flex-col gap-6 text-sm md:text-lg font-[600] leading-relaxed text-[var(--color-body-text-2)]">
               <p>
                 At DigInfo, we believe networking should be simple, meaningful,
                 and accessible anywhere. Traditional business cards often get
@@ -116,7 +116,7 @@ const AboutUs = () => {
                 Our Mission
               </h2>
             </div>
-            <div className="md:col-span-8 text-sm md:text-lg font-[600] leading-relaxed text-[var(--color-body-text-3)]">
+            <div className="md:col-span-8 text-sm md:text-lg font-[600] leading-relaxed text-[var(--color-body-text-2)]">
               <p>
                 To simplify professional networking by providing innovative
                 digital tools that help people connect, collaborate, and grow
@@ -132,7 +132,7 @@ const AboutUs = () => {
                 Our Vision
               </h2>
             </div>
-            <div className="md:col-span-8 text-sm md:text-lg font-[600] leading-relaxed text-[var(--color-body-text-3)]">
+            <div className="md:col-span-8 text-sm md:text-lg font-[600] leading-relaxed text-[var(--color-body-text-2)]">
               <p>
                 To become the leading digital identity platform that transforms
                 how professionals and organizations build relationships, share

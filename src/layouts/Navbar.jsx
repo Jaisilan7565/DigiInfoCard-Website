@@ -178,7 +178,7 @@ const Navbar = () => {
         {/* Desktop Call to Action Button */}
         <div className="hidden md:block">
           <Link
-            to="/#contact"
+            to="/contact-us"
             className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-[var(--color-body-copy-4)] font-semibold text-[16px] rounded-xl transition-all duration-300 hover:bg-white/95 hover:scale-[1.03] hover:shadow-[0_8px_20px_rgba(255,255,255,0.2)] focus:outline-none focus:ring-2 focus:ring-white active:scale-[0.98]"
           >
             Contact Us
@@ -257,7 +257,7 @@ const Navbar = () => {
             ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <Link
-            to="/#contact"
+            to="/contact-us"
             onClick={() => setIsOpen(false)}
             className="w-full max-w-sm text-center py-4 bg-white text-[var(--color-body-copy-4)] font-bold text-lg rounded-[16px] shadow-lg transition-transform active:scale-[0.98] focus:outline-none"
           >

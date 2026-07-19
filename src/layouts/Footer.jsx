@@ -5,7 +5,7 @@ const Footer = () => {
   const location = useLocation();
   const [showToast, setShowToast] = React.useState(false);
 
-  const isAboutPage = location.pathname === "/about-us";
+  const isWhiteBgPage = location.pathname === "/about-us" || location.pathname === "/contact-us";
 
   const handleAppStoreClick = (e) => {
     e.preventDefault();
@@ -32,13 +32,13 @@ const Footer = () => {
 
   const companyLinks = [
     { label: "About Us", href: "/about-us" },
-    { label: "Contact Us", href: "/#contact" },
+    { label: "Contact Us", href: "/contact-us" },
     { label: "Privacy Policy", href: "#privacy" }, // Keep hash or change to /privacy if page exists
     { label: "Terms & Conditions", href: "#terms" },
   ];
 
   return (
-    <div className={`w-full ${isAboutPage ? "bg-white" : "bg-[var(--color-light-gray)]"}`}>
+    <div className={`w-full ${isWhiteBgPage ? "bg-white" : "bg-[var(--color-light-gray)]"}`}>
       <footer
         id="contact"
         className="w-full font-plus-jakarta bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-sections-light-blue)] rounded-t-[44px] scroll-mt-20 md:scroll-mt-24"
