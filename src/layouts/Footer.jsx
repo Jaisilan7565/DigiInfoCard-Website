@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const location = useLocation();
@@ -21,20 +21,22 @@ const Footer = () => {
     }
   }, [showToast]);
 
+  const isFeatureOrPricingPage = location.pathname === "/individual" || location.pathname === "/corporate";
+  
   const quickLinks = [
     { label: "Home", href: "/" },
-    { label: "Features", href: "/#features" },
-    { label: "Pricing", href: "/#pricing" },
-    { label: "Testimonials", href: "/#testimonials" },
-    { label: "FAQ", href: "/#faq" },
-    { label: "Blogs", href: "/#blogs" },
+    { label: "Features", href: isFeatureOrPricingPage ? `${location.pathname}#features` : "/#features" },
+    { label: "Pricing", href: isFeatureOrPricingPage ? `${location.pathname}#pricing` : "/#pricing" },
+    { label: "Testimonials", href: isFeatureOrPricingPage ? `${location.pathname}#testimonials` : "/#testimonials" },
+    { label: "FAQ", href: isFeatureOrPricingPage ? `${location.pathname}#faq` : "/#faq" },
+    { label: "Blogs", href: isFeatureOrPricingPage ? `${location.pathname}#blogs` : "/#blogs" },
   ];
 
   const companyLinks = [
     { label: "About Us", href: "/about-us" },
     { label: "Contact Us", href: "/contact-us" },
-    { label: "Privacy Policy", href: "#privacy" }, // Keep hash or change to /privacy if page exists
-    { label: "Terms & Conditions", href: "#terms" },
+    { label: "Privacy Policy", href: isFeatureOrPricingPage ? `${location.pathname}#privacy` : "/#privacy" },
+    { label: "Terms & Conditions", href: isFeatureOrPricingPage ? `${location.pathname}#terms` : "/#terms" },
   ];
 
   return (
@@ -161,13 +163,13 @@ const Footer = () => {
                   Quick Links
                 </h3>
                 {quickLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     className="text-[var(--color-body-copy-2)] text-sm md:text-base hover:text-white transition-colors whitespace-nowrap"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
 
@@ -177,13 +179,13 @@ const Footer = () => {
                   Company
                 </h3>
                 {companyLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     className="text-[var(--color-body-copy-2)] text-sm md:text-base hover:text-white transition-colors whitespace-nowrap"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

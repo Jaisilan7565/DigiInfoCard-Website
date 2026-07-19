@@ -13,16 +13,16 @@ const Navbar = () => {
 
     if (pathname === "/about-us") {
       setActiveItem("About Us");
-    } else if (pathname === "/") {
+    } else {
       if (hash === "#features") {
         setActiveItem("Features");
       } else if (hash === "#pricing") {
         setActiveItem("Pricing");
-      } else {
+      } else if (pathname === "/") {
         setActiveItem("Home");
+      } else {
+        setActiveItem("");
       }
-    } else {
-      setActiveItem(""); // Clear active item on other paths like /individual
     }
   }, [location]);
 
@@ -59,6 +59,7 @@ const Navbar = () => {
   useEffect(() => {
     isAutoScrolling.current = true;
     setIsVisible(true);
+    setLastScrollY(window.scrollY);
 
     if (autoScrollTimeout.current) {
       clearTimeout(autoScrollTimeout.current);
@@ -66,7 +67,7 @@ const Navbar = () => {
 
     autoScrollTimeout.current = setTimeout(() => {
       isAutoScrolling.current = false;
-    }, 1200); // 1.2s covers standard smooth scroll animations
+    }, 2000); // 2s covers standard smooth scroll animations
 
     return () => {
       if (autoScrollTimeout.current) {
@@ -124,11 +125,13 @@ const Navbar = () => {
   }, [isVisible]);
 
 
+  const isFeatureOrPricingPage = location.pathname === "/individual" || location.pathname === "/corporate";
+  
   const navItems = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
-    { name: "Features", href: "/#features" },
-    { name: "Pricing", href: "/#pricing" },
+    { name: "Features", href: isFeatureOrPricingPage ? `${location.pathname}#features` : "/#features" },
+    { name: "Pricing", href: isFeatureOrPricingPage ? `${location.pathname}#pricing` : "/#pricing" },
   ];
 
   return (

@@ -51,7 +51,7 @@ const Section_9 = () => {
   };
 
   return (
-    <section className="w-full bg-white py-16 md:py-24 mb-20 px-4 flex flex-col items-center font-plus-jakarta z-10 relative">
+    <section id="faq" className="w-full bg-white py-16 md:py-24 mb-20 px-4 flex flex-col items-center font-plus-jakarta z-10 relative scroll-mt-20 md:scroll-mt-24">
       {/* Badge */}
       <div className="flex items-center gap-2.5 text-[var(--color-primary)] font-semibold text-sm md:text-base tracking-wide mb-6">
         <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]"></span>

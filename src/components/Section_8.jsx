@@ -363,7 +363,7 @@ const Section_8 = () => {
 
   return (
     <div className="w-full bg-gradient-to-b from-[var(--color-light-gray)] from-50% to-white to-50% py-8 md:py-32">
-      <section className="w-full md:w-[94%] rounded-[44px] px-0 md:px-16 pt-2 pb-14 md:py-16 text-white relative overflow-hidden font-plus-jakarta mx-auto shadow-xl shadow-[var(--color-primary)]/10 z-10">
+      <section id="testimonials" className="w-full md:w-[94%] rounded-[44px] px-0 md:px-16 pt-2 pb-14 md:py-16 text-white relative overflow-hidden font-plus-jakarta mx-auto shadow-xl shadow-[var(--color-primary)]/10 z-10 scroll-mt-20 md:scroll-mt-24">
         {/* Background SVG and Gradient */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="sticky md:absolute top-0 w-full h-full bg-gradient-to-b from-[var(--color-primary)] md:via-30% via-[var(--color-primary)]/80 to-[var(--color-sections-light-blue)]">
