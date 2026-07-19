@@ -15,7 +15,7 @@ const Section_6 = () => {
       title: "Corporate Teams & Organizers",
       description:
         "Empower your entire organization with branded digital identities, team collaboration tools, task management, and business showcases designed to streamline operations and accelerate growth.",
-      link: "#teams",
+      link: "/corporate",
     },
   ];
 

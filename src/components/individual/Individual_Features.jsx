@@ -25,18 +25,6 @@ const features = [
     description:
       "Turn every connection into a valuable opportunity by building stronger professional relationships. Stay organized with your network, identify potential clients and collaborators, and nurture meaningful connections through timely follow-ups. Expand your reach, generate new business opportunities, and grow your career with smarter networking.",
   },
-  //   {
-  //     image: "/videos/steps/Motion-5.webm",
-  //     header: "Track Your Performance.",
-  //     description:
-  //       "Understand how your professional profile is performing. Access real-time analytics on profile visits, link clicks, contact saves, and platform engagement. Fine-tune your content and layout to maximize visual impact, ensuring your networking efforts yield measurable results.",
-  //   },
-  //   {
-  //     image: "/videos/steps/Motion-6.webm",
-  //     header: "Always Up to Date.",
-  //     description:
-  //       "Keep your entire network informed automatically. Update your phone number, social links, office address, or current job title, and see your digital card update instantly across all platforms. Save printing costs and ensure anyone who has your card always has your latest coordinates.",
-  //   },
 ];
 
 const Individual_Features = () => {

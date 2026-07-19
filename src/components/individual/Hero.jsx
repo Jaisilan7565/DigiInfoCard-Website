@@ -16,7 +16,7 @@ const Hero = () => {
           <span className="text-[var(--color-primary)] block md:inline">
             Your Digital Identity,
           </span>{" "}
-          <span className="block mt-1">Always Within Reach</span>
+          <span>Always Within Reach</span>
         </h1>
 
         {/* Description */}
