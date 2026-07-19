@@ -110,7 +110,7 @@ const Section_4 = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[var(--color-yellow)] font-semibold text-sm md:text-base tracking-wide mb-6">
               <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-yellow)]"></span>
-              Our Features
+              How It Works?
             </div>
 
             {/* Title */}

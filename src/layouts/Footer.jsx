@@ -1,6 +1,22 @@
 import React from "react";
 
 const Footer = () => {
+  const [showToast, setShowToast] = React.useState(false);
+
+  const handleAppStoreClick = (e) => {
+    e.preventDefault();
+    setShowToast(true);
+  };
+
+  React.useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
   const quickLinks = [
     { label: "Home", href: "#" },
     { label: "Features", href: "#features" },
@@ -85,7 +101,9 @@ const Footer = () => {
               <div className="flex flex-row gap-3 flex-wrap">
                 {/* Google Play Badge */}
                 <a
-                  href="#"
+                  href="https://play.google.com/store/apps/details?id=com.ashaedgesoftwares.digiinfocard"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Get it on Google Play"
                   className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 hover:scale-105 transition-all duration-300"
                 >
@@ -105,10 +123,10 @@ const Footer = () => {
                 </a>
 
                 {/* App Store Badge */}
-                <a
-                  href="#"
+                <button
+                  onClick={handleAppStoreClick}
                   aria-label="Download on the App Store"
-                  className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 hover:scale-105 transition-all duration-300"
+                  className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 hover:scale-105 transition-all duration-300 cursor-pointer"
                 >
                   <img
                     src="/svg/Apple.svg"
@@ -121,7 +139,7 @@ const Footer = () => {
                       App Store
                     </span>
                   </div>
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -172,6 +190,14 @@ const Footer = () => {
         </div>
       </div>
       </footer>
+
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-[var(--color-body-copy-4)] text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm font-semibold tracking-wide flex items-center gap-2 border border-white/10 transition-all duration-300">
+          <span className="w-2 h-2 rounded-full bg-[var(--color-yellow)] animate-pulse"></span>
+          Coming Soon!!!
+        </div>
+      )}
     </div>
   );
 };
