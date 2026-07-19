@@ -11,10 +11,10 @@ const Navbar = () => {
     const hash = location.hash;
     const pathname = location.pathname;
 
-    if (pathname === "/") {
-      if (hash === "#about") {
-        setActiveItem("About Us");
-      } else if (hash === "#features") {
+    if (pathname === "/about-us") {
+      setActiveItem("About Us");
+    } else if (pathname === "/") {
+      if (hash === "#features") {
         setActiveItem("Features");
       } else if (hash === "#pricing") {
         setActiveItem("Pricing");
@@ -126,7 +126,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/#about" },
+    { name: "About Us", href: "/about-us" },
     { name: "Features", href: "/#features" },
     { name: "Pricing", href: "/#pricing" },
   ];

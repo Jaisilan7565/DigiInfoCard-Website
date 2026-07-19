@@ -18,18 +18,18 @@ const Footer = () => {
   }, [showToast]);
 
   const quickLinks = [
-    { label: "Home", href: "#" },
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Blogs", href: "#blogs" },
+    { label: "Home", href: "/" },
+    { label: "Features", href: "/#features" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Blogs", href: "/#blogs" },
   ];
 
   const companyLinks = [
-    { label: "About Us", href: "#about" },
-    { label: "Contact Us", href: "#contact" },
-    { label: "Privacy Policy", href: "#privacy" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Contact Us", href: "/#contact" },
+    { label: "Privacy Policy", href: "#privacy" }, // Keep hash or change to /privacy if page exists
     { label: "Terms & Conditions", href: "#terms" },
   ];
 
