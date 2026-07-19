@@ -37,7 +37,7 @@ const AboutUs = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="w-full max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-0 border-y border-neutral-100 py-10 md:py-16 mb-8 md:mb-28">
+        <div className="w-full max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-0 py-10 md:py-16 mb-8 md:mb-28">
           {/* Stat 1 */}
           <div className="flex flex-col items-start md:items-center text-center md:text-left md:px-6 px-4 py-6 md:py-2 border-r-2 border-b-2 md:border-b-0 border-[var(--color-body-copy-3)]/60">
             <span className="text-2xl md:text-4xl font-semibold text-[var(--color-primary)] mb-3">
