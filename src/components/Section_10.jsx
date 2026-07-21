@@ -219,8 +219,8 @@ const Section_10 = () => {
       {/* View All Button */}
       <div className="text-center items-center justify-center">
         <a
-          href="#"
-          className="inline-flex items-center justify-center px-10 py-4 text-sm md:text-base font-semibold text-[var(--color-primary)] underline underline-offset-4"
+          href="/blog"
+          className="inline-flex items-center justify-center px-10 py-4 text-sm md:text-base font-semibold text-[var(--color-primary)] underline underline-offset-4 hover:opacity-80 transition-opacity"
         >
           View All
         </a>

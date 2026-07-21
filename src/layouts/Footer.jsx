@@ -29,7 +29,7 @@ const Footer = () => {
     { label: "Pricing", href: isFeatureOrPricingPage ? `${location.pathname}#pricing` : "/#pricing" },
     { label: "Testimonials", href: isFeatureOrPricingPage ? `${location.pathname}#testimonials` : "/#testimonials" },
     { label: "FAQ", href: isFeatureOrPricingPage ? `${location.pathname}#faq` : "/#faq" },
-    { label: "Blogs", href: isFeatureOrPricingPage ? `${location.pathname}#blogs` : "/#blogs" },
+    { label: "Blogs", href: "/blog" },
   ];
 
   const companyLinks = [

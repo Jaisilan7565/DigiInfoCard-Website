@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardSlideshow from "./CardSlideshow";
 
 const Section_1 = () => {
+  const [showToast, setShowToast] = useState(false);
+
+  const handleDownloadClick = (e) => {
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (isIOS) {
+      e.preventDefault();
+      setShowToast(true);
+    }
+  };
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => setShowToast(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
   return (
     <div
       className="w-full md:w-[94%] min-h-screen bg-gradient-to-b from-[#F0F0F0] via-[#E0E0E0] via-[#C5C5C5] to-[#BBBBBB]
@@ -40,10 +60,13 @@ const Section_1 = () => {
         {/* Action Buttons */}
         <div className="flex flex-row gap-2 sm:gap-4 justify-center items-center w-full max-w-md mx-auto mb-12 md:mb-16">
           <a
-            href="#create"
+            href="https://play.google.com/store/apps/details?id=com.ashaedgesoftwares.digiinfocard"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleDownloadClick}
             className="flex-1 md:flex-initial md:min-w-[200px] px-2 sm:px-6 md:px-8 py-3.5 md:py-4 bg-white text-[var(--color-body-copy-4)] font-semibold text-xs sm:text-sm md:text-base rounded-xl text-center hover:bg-neutral-50 hover:scale-[1.02] transition-all duration-300 active:scale-[0.98] border border-[#e8e8e8]/30 leading-tight whitespace-nowrap"
           >
-            Create Free Card
+            Download For Free
           </a>
           <a
             href="#library"
@@ -56,6 +79,14 @@ const Section_1 = () => {
         {/* Mobile Hand Image with animated card slideshow */}
         <CardSlideshow />
       </div>
+
+      {/* Toast Notification for iOS */}
+      {showToast && (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-[var(--color-body-copy-4)] text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm font-semibold tracking-wide flex items-center gap-2 border border-white/10 transition-all duration-300">
+          <span className="w-2 h-2 rounded-full bg-[var(--color-yellow)] animate-pulse"></span>
+          Coming Soon for iOS!!!
+        </div>
+      )}
     </div>
   );
 };

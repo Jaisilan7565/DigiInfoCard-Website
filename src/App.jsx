@@ -6,6 +6,8 @@ import Individual from "./pages/Individual";
 import Corporate from "./pages/Corporate";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
+import Blog from "./pages/Blog";
+import BlogDetails from "./pages/BlogDetails";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 
 const App = () => {
@@ -19,6 +21,9 @@ const App = () => {
           <Route path="/corporate" element={<Corporate />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
+          <Route path="/blog-details" element={<BlogDetails />} />
         </Routes>
       </Layout>
     </Router>
