@@ -4,6 +4,7 @@ import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import Individual from "./pages/Individual";
 import Corporate from "./pages/Corporate";
+import CorporateHome from "./pages/CorporateHome";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Blog from "./pages/Blog";
@@ -18,6 +19,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/corporates" element={<CorporateHome />} />
           <Route path="/individual" element={<Individual />} />
           <Route path="/corporate" element={<Corporate />} />
           <Route path="/about-us" element={<AboutUs />} />
