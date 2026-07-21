@@ -83,7 +83,7 @@ const CardSlideshow = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[640px] px-4 md:px-8 mx-auto scale-175 mt-8 md:mt-16 overflow-visible">
+    <div className="w-full max-w-[640px] px-4 md:px-8 mx-auto scale-175 mt-8 md:mt-16 overflow-visible pointer-events-none">
       {/* Background Cards Layer (z-10) */}
       <div
         className="absolute z-10 flex flex-row"

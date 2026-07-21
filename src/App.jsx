@@ -8,6 +8,7 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Blog from "./pages/Blog";
 import BlogDetails from "./pages/BlogDetails";
+import CardLibrary from "./pages/CardLibrary";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 
 const App = () => {
@@ -24,6 +25,8 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/blog-details" element={<BlogDetails />} />
+          <Route path="/card-library" element={<CardLibrary />} />
+          <Route path="/cards-library" element={<CardLibrary />} />
         </Routes>
       </Layout>
     </Router>
