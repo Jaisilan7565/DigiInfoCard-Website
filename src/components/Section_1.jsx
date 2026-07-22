@@ -58,23 +58,22 @@ const Section_1 = () => {
           team—all from one platform.
         </p>
 
-        {/* Action Buttons */}
         <div className="flex flex-row gap-2 sm:gap-4 justify-center items-center w-full max-w-md mx-auto mb-12 md:mb-16">
+          <Link
+            to="/card-playground"
+            className="flex-1 md:flex-initial md:min-w-[200px] px-2 sm:px-6 md:px-8 py-3.5 md:py-4 bg-white text-[var(--color-body-copy-4)] font-semibold text-xs sm:text-sm md:text-base rounded-xl text-center hover:bg-neutral-50 hover:scale-[1.02] hover:cursor-pointer transition-all duration-300 active:scale-[0.98] border border-[#e8e8e8]/30 leading-tight whitespace-nowrap cursor-pointer"
+          >
+            Card Playground
+          </Link>
           <a
             href="https://play.google.com/store/apps/details?id=com.ashaedgesoftwares.digiinfocard"
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleDownloadClick}
-            className="flex-1 md:flex-initial md:min-w-[200px] px-2 sm:px-6 md:px-8 py-3.5 md:py-4 bg-white text-[var(--color-body-copy-4)] font-semibold text-xs sm:text-sm md:text-base rounded-xl text-center hover:bg-neutral-50 hover:scale-[1.02] hover:cursor-pointer transition-all duration-300 active:scale-[0.98] border border-[#e8e8e8]/30 leading-tight whitespace-nowrap cursor-pointer"
+            className="flex-1 md:flex-initial md:min-w-[200px] px-2 sm:px-6 md:px-8 py-3.5 md:py-4 bg-[var(--color-primary)] text-white font-semibold text-xs sm:text-sm md:text-base rounded-xl text-center hover:bg-[var(--color-primary)]/95 hover:scale-[1.02] hover:cursor-pointer transition-all duration-300 active:scale-[0.98] shadow-lg shadow-[var(--color-primary)]/10 leading-tight whitespace-nowrap cursor-pointer"
           >
             Download For Free
           </a>
-          <Link
-            to="/card-library"
-            className="flex-1 md:flex-initial md:min-w-[200px] px-2 sm:px-6 md:px-8 py-3.5 md:py-4 bg-[var(--color-primary)] text-white font-semibold text-xs sm:text-sm md:text-base rounded-xl text-center hover:bg-[var(--color-primary)]/95 hover:scale-[1.02] hover:cursor-pointer transition-all duration-300 active:scale-[0.98] shadow-lg shadow-[var(--color-primary)]/10 leading-tight whitespace-nowrap cursor-pointer"
-          >
-            Visit Card Library →
-          </Link>
         </div>
 
         {/* Mobile Hand Image with animated card slideshow */}

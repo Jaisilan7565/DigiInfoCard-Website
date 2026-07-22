@@ -13,6 +13,8 @@ const Navbar = () => {
 
     if (pathname === "/about-us") {
       setActiveItem("About Us");
+    } else if (pathname === "/card-library" || pathname === "/cards-library") {
+      setActiveItem("Card Library");
     } else {
       if (hash === "#features") {
         setActiveItem("Features");
@@ -129,9 +131,10 @@ const Navbar = () => {
   
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about-us" },
+    { name: "Card Library", href: "/card-library" },
     { name: "Features", href: isFeatureOrPricingPage ? `${location.pathname}#features` : "/#features" },
     { name: "Pricing", href: isFeatureOrPricingPage ? `${location.pathname}#pricing` : "/#pricing" },
+    { name: "About Us", href: "/about-us" },
   ];
 
   return (

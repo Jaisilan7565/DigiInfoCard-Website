@@ -1,18 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-// Dynamically discover all images in the public card library folder
-const images = import.meta.glob(
-  "/public/images/library-cards/*.{png,jpg,jpeg,svg,webp}",
-  { eager: true },
-);
-const allCardPaths = Object.keys(images)
-  .map((path) => path.replace("/public", ""))
-  .sort((a, b) => {
-    const numA = parseInt(a.match(/\d+/)?.[0] || "0", 10);
-    const numB = parseInt(b.match(/\d+/)?.[0] || "0", 10);
-    return numA - numB;
-  });
+// Images are served from /public/images/library-cards/ as static files.
+// Use plain URL strings — never import.meta.glob on public/ assets.
+const allCardPaths = Array.from({ length: 30 }, (_, i) => `/images/library-cards/${i + 11}.png`);
 
 const CardLibrary = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -20,7 +11,7 @@ const CardLibrary = () => {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const gridSectionRef = useRef(null);
-  const isInitialMount = useRef(true);
+  const prevPageRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Disable body scroll when modal is open
@@ -57,10 +48,16 @@ const CardLibrary = () => {
 
   // Scroll to top of the grid when page changes (after DOM update)
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
+    if (prevPageRef.current === null) {
+      prevPageRef.current = currentPage;
       return;
     }
+
+    if (prevPageRef.current === currentPage) {
+      return;
+    }
+
+    prevPageRef.current = currentPage;
 
     const timer = setTimeout(() => {
       if (gridSectionRef.current) {
