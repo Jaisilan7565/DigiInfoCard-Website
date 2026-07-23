@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Section_7 = () => {
+  const [showToast, setShowToast] = useState(false);
+
+  const handleDownloadClick = (e) => {
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (isIOS) {
+      e.preventDefault();
+      setShowToast(true);
+    }
+  };
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => setShowToast(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
   const plans = [
     {
       price: <span className="text-3xl">Free</span>,
@@ -9,7 +30,7 @@ const Section_7 = () => {
         "Perfect to get started with your digital identity, no cost involved.",
       features: ["1 Dynamic Card", "Personal QR Code", "Basic Analytics"],
       ctaText: "Start Free Trial",
-      ctaLink: "#free-trial",
+      ctaLink: "https://play.google.com/store/apps/details?id=com.ashaedgesoftwares.digiinfocard",
       isPopular: false,
       theme: "light",
     },
@@ -30,7 +51,7 @@ const Section_7 = () => {
         "Custom Branding",
       ],
       ctaText: "Upgrade Plan",
-      ctaLink: "#upgrade",
+      ctaLink: "https://play.google.com/store/apps/details?id=com.ashaedgesoftwares.digiinfocard",
       isPopular: true,
       theme: "blue",
     },
@@ -52,7 +73,7 @@ const Section_7 = () => {
         "Priority Support",
       ],
       ctaText: "Contact Sales",
-      ctaLink: "#contact",
+      ctaLink: "/contact-us",
       isPopular: false,
       theme: "light",
     },
@@ -179,21 +200,45 @@ const Section_7 = () => {
                 </ul>
 
                 {/* CTA Button */}
-                <a
-                  href={plan.ctaLink}
-                  className={`w-full py-4 text-center font-bold text-sm md:text-base rounded-xl transition-all duration-300 active:scale-[0.98] ${
-                    isBlue
-                      ? "bg-white text-[var(--color-primary)] hover:bg-neutral-50 shadow-md shadow-black/5"
-                      : "bg-[var(--color-yellow)] text-[var(--color-body-copy-4)] hover:bg-[var(--color-yellow)]/90 shadow-md shadow-[var(--color-yellow)]/10"
-                  }`}
-                >
-                  {plan.ctaText}
-                </a>
+                {plan.ctaLink.startsWith("/") ? (
+                  <Link
+                    to={plan.ctaLink}
+                    className={`w-full py-4 text-center font-bold text-sm md:text-base rounded-xl transition-all duration-300 active:scale-[0.98] ${
+                      isBlue
+                        ? "bg-white text-[var(--color-primary)] hover:bg-neutral-50 shadow-md shadow-black/5"
+                        : "bg-[var(--color-yellow)] text-[var(--color-body-copy-4)] hover:bg-[var(--color-yellow)]/90 shadow-md shadow-[var(--color-yellow)]/10"
+                    }`}
+                  >
+                    {plan.ctaText}
+                  </Link>
+                ) : (
+                  <a
+                    href={plan.ctaLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleDownloadClick}
+                    className={`w-full py-4 text-center font-bold text-sm md:text-base rounded-xl transition-all duration-300 active:scale-[0.98] ${
+                      isBlue
+                        ? "bg-white text-[var(--color-primary)] hover:bg-neutral-50 shadow-md shadow-black/5"
+                        : "bg-[var(--color-yellow)] text-[var(--color-body-copy-4)] hover:bg-[var(--color-yellow)]/90 shadow-md shadow-[var(--color-yellow)]/10"
+                    }`}
+                  >
+                    {plan.ctaText}
+                  </a>
+                )}
               </div>
             </div>
           );
         })}
       </div>
+
+      {/* Toast Notification for iOS */}
+      {showToast && (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-[var(--color-body-copy-4)] text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm font-semibold tracking-wide flex items-center gap-2 border border-white/10 transition-all duration-300">
+          <span className="w-2 h-2 rounded-full bg-[var(--color-yellow)] animate-pulse"></span>
+          Coming Soon for iOS!!!
+        </div>
+      )}
     </section>
   );
 };

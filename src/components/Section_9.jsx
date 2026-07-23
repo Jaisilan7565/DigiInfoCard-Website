@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Section_9 = () => {
   const [openIndex, setOpenIndex] = useState(0);
@@ -126,12 +127,12 @@ const Section_9 = () => {
         <p className="text-[var(--color-body-copy-3)] text-sm md:text-base font-semibold leading-relaxed mb-8">
           Our team is always happy to help. Drop us a message anytime.
         </p>
-        <a
-          href="mailto:info@ashaedgesoftwares.com"
+        <Link
+          to="/contact-us"
           className="inline-flex items-center justify-center px-16 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-primary)]/90 text-white font-bold text-sm md:text-base rounded-xl transition-all duration-300 active:scale-[0.98] shadow-lg shadow-[var(--color-primary)]/20"
         >
           Mail Us
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -63,7 +63,7 @@ const Section_1 = () => {
             to="/card-playground"
             className="flex-1 md:flex-initial md:min-w-[200px] px-2 sm:px-6 md:px-8 py-3.5 md:py-4 bg-white text-[var(--color-body-copy-4)] font-semibold text-xs sm:text-sm md:text-base rounded-xl text-center hover:bg-neutral-50 hover:scale-[1.02] hover:cursor-pointer transition-all duration-300 active:scale-[0.98] border border-[#e8e8e8]/30 leading-tight whitespace-nowrap cursor-pointer"
           >
-            Card Playground
+            Try It Now
           </Link>
           <a
             href="https://play.google.com/store/apps/details?id=com.ashaedgesoftwares.digiinfocard"
